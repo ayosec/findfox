@@ -9,7 +9,6 @@ const MOZ_PROGRAM: &str = "firefox";
 /// Generic error type.
 type Error = Box<dyn std::error::Error>;
 
-mod docker;
 mod remote;
 mod x11;
 
@@ -39,7 +38,7 @@ fn list_hostnames(client: x11::Client) -> Result<(), Error> {
                 && client.get_property(window, moz_program).as_deref() == Some(MOZ_PROGRAM)
             {
                 if let Some(hostname) = client.get_property(window, hostname) {
-                    println!("{} {}", docker::get_container_name(&hostname)?, window);
+                    println!("{} {}", hostname, window);
                 }
             }
         }
