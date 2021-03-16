@@ -18,7 +18,10 @@ fn main() -> Result<(), Error> {
     let mut args = std::env::args().skip(1);
     match args.next().as_deref() {
         None | Some("list") => list_hostnames(client),
-        _ => Err("Invalid command".into()),
+        _ => {
+            eprint!("{}", include_str!("../HELP.txt"));
+            std::process::exit(1);
+        }
     }
 }
 

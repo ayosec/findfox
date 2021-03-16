@@ -1,0 +1,8 @@
+findfox: detect Firefox instances in Docker containers to receive remote commands.
+
+Usage:
+
+  - findfox [list]
+
+    Find windows for Firefox instances. For each match, it prints the container
+    name and the window identifier.
