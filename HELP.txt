@@ -6,3 +6,7 @@ Usage:
 
     Find windows for Firefox instances. For each match, it prints the container
     name and the window identifier.
+
+  - findfox send <WINDOW> <ARG>*
+
+    Send a list of <ARG>* to the specified <WINDOW>

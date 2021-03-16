@@ -10,6 +10,7 @@ const MOZ_PROGRAM: &str = "firefox";
 type Error = Box<dyn std::error::Error>;
 
 mod docker;
+mod remote;
 mod x11;
 
 fn main() -> Result<(), Error> {
@@ -18,6 +19,7 @@ fn main() -> Result<(), Error> {
     let mut args = std::env::args().skip(1);
     match args.next().as_deref() {
         None | Some("list") => list_hostnames(client),
+        Some("send") => remote::send(client, args),
         _ => {
             eprint!("{}", include_str!("../HELP.txt"));
             std::process::exit(1);
