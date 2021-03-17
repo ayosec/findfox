@@ -14,8 +14,12 @@ const FIXED_PATH: &[u8] = b"/tmp/\0";
 
 /// Parse arguments from the command line to send a remote command.
 pub fn send(client: Client, mut args: impl Iterator<Item = String>) -> Result<(), Error> {
-    let window: u32 = match args.next() {
-        Some(w) => w.parse()?,
+    let window = match args.next() {
+        Some(a) => match a.strip_prefix("0x") {
+            None => a.parse()?,
+            Some(a) => u32::from_str_radix(a, 16)?,
+        },
+
         None => return Err("Missing <WINDOW>".into()),
     };
 
