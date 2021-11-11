@@ -1,6 +1,6 @@
 [package]
 name = "findfox"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["ayosec@gmail.com"]
 edition = "2021"
 description = "Send remote commands to Firefox instances"
