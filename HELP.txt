@@ -1,12 +1,12 @@
-findfox: detect Firefox instances in Docker containers to receive remote commands.
+findfox: implements the Firefox remote protocol over DBus.
 
 Usage:
 
   - findfox [list]
 
-    Find windows for Firefox instances. For each match, it prints the container
-    name and the window identifier.
+    Find Firefox instances. For each match, it prints the ID and the decoded
+    profile name.
 
-  - findfox send <WINDOW> <ARG>*
+  - findfox send <ID> <ARG>*
 
-    Send a list of <ARG>* to the specified <WINDOW>
+    Send a list of arguments to the specified instance.
